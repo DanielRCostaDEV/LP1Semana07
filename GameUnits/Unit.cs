@@ -7,6 +7,20 @@ namespace GameUnits
         private int movement;
         public virtual int Health { get; set; }
 
+        public override float Cost => 12.5f;
+
+        public SpyUnit() : base(8, 2) { }
+
+        public void GetSecretInfo(Unit unit)
+        {
+            if (unit is SpyUnit)
+                XP += 3;
+            else if (unit is MilitaryUnit)
+                XP += 2;
+            else
+                XP += 1;
+        }
+
         public Unit(int movement, int health)
         {
             this.movement = movement;
